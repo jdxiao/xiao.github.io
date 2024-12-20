@@ -112,9 +112,10 @@ body {
 }
 
 .text-box {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: #bbbdff;
   display: flex;
-  flex-direction:row;
+  flex-direction: column;
   border-radius: 1vh;
   padding: 3vh;
 }
