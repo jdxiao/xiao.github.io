@@ -8,6 +8,16 @@ body {
   padding-top: 0;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3c2194;
+  text-decoration: underline;
+}
+
 .side-box {
   width: 35vh;
   height: 80vh;
