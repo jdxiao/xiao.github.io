@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - Xiao's Website</title>
+  <title>Xiao's Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body onload="showProject('CareBrew')">
@@ -52,20 +52,27 @@
       </div>
 
       <div class="text-box" style="width: 15%; height: 100%; margin-top: 2vh; margin-left: 3vh">
-        <h2>Project Directory</h2>
-        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('CareBrew')">CareBrew - Current</p>
-        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project1')">Project 1</p>
-        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project2')">Project 2</p>
-        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project3')">Project 3</p>
+        <h2>Directory</h2>
+        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('CareBrew', this)">CareBrew - Current</p>
+        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('Project1', this)">Project 1</p>
+        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('Project2', this)">Project 2</p>
+        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('Project3', this)">Project 3</p>
       </div>
     </div>
   </div>
   <script>
-    function showProject(projectName) {
+    function showProject(projectName, element) {
       const projectInfo = document.getElementById('project-info');
       const demoImage = document.getElementById('demo-image');
       let projectContent = '';
       let demoImageSrc = '';
+
+      // Remove active class from all project directory items
+      const projectItems = document.querySelectorAll('.directory-button');
+      projectItems.forEach(item => item.classList.remove('active'));
+
+      // Add active class to the clicked item
+      element.classList.add('active');
 
       switch (projectName) {
         case 'CareBrew':
@@ -73,32 +80,32 @@
             <h2>CareBrew</h2>
             <p style="margin-top: 2vh;">CareBrew is...</p>
           `;
-          demoImageSrc = 'static/carebrew.png';
+          demoImageSrc = 'static/carebrew.png'; // Update with the actual image path
           break;
         case 'Project1':
           projectContent = `
             <h2>Project 1</h2>
-            <p style="margin-top: 2vh;">Project 1 is...</p>
+            <p style="margin-top: 2vh;">Project 1 is about...</p>
           `;
-          demoImageSrc = 'static/project1.png';
+          demoImageSrc = 'static/project1.png'; // Update with the actual image path
           break;
         case 'Project2':
           projectContent = `
             <h2>Project 2</h2>
-            <p style="margin-top: 2vh;">Project 2 is...</p>
+            <p style="margin-top: 2vh;">Project 2 involves...</p>
           `;
-          demoImageSrc = 'static/project2.png';
+          demoImageSrc = 'static/project2.png'; // Update with the actual image path
           break;
         case 'Project3':
           projectContent = `
             <h2>Project 3</h2>
-            <p style="margin-top: 2vh;">Project 3 is...</p>
+            <p style="margin-top: 2vh;">Project 3 explores...</p>
           `;
-          demoImageSrc = 'static/project3.png';
+          demoImageSrc = 'static/project3.png'; // Update with the actual image path
           break;
         default:
-          projectContent = '<h2>Project Info</h2>';
-          demoImageSrc = 'static/placeholder.png';
+          projectContent = '<h2>Project Info</h2><p style="margin-top: 2vh;">Select a project to see details.</p>';
+          demoImageSrc = 'static/placeholder.png'; // Default placeholder image
       }
 
       projectInfo.innerHTML = projectContent;

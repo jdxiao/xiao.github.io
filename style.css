@@ -161,3 +161,19 @@ a:hover {
   margin: 0;
   padding: 0;
 }
+
+.directory-button {
+  cursor: pointer;
+  border-radius: 1vh;
+  transition: color 0.3s, font-weight 0.3s;
+  padding: 0.5vh 1vh;
+}
+
+.directory-button:hover {
+  background-color: #dddcff;
+}
+
+.directory-button.active {
+  color: white;
+  font-weight: bold;
+}
