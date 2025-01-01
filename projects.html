@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xiao's Website</title>
+  <title>Projects - Xiao's Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
+<body onload="showProject('CareBrew')">
   <div class="banner">
     <button class="button" onclick="window.location.href='index.html'">About</button>
     <button class="button" onclick="window.location.href='resume.html'">Resume</button>
@@ -42,23 +41,69 @@
     <h1 style="text-align: center;">Projects</h1>
 
     <div class="text-box-container" style="height: 76%">
-      <div class="text-box" style="width: 25%; height: 100%; margin-top: 2vh; margin-left: 2vh;">
+      <div class="text-box" id="project-info" style="width: 25%; height: 100%; margin-top: 2vh; margin-left: 2vh;">
         <h2>CareBrew</h2>
         <p style="margin-top: 2vh">CareBrew is...</p>
       </div>
 
-      <div class="text-box" style="width: 40%; height: 100%; margin-top: 2vh; margin-left: 3vh">
-        <h2>Project Demo</h2>
+      <div class="text-box" id="project-demo" style="width: 40%; height: 100%; margin-top: 2vh; margin-left: 3vh">
+        <h2>Demo</h2>
+        <img id="demo-image" src="static/placeholder.png" alt="Demo Placeholder" style="width: 100%; height: auto; margin-top: 2vh">
       </div>
 
       <div class="text-box" style="width: 15%; height: 100%; margin-top: 2vh; margin-left: 3vh">
         <h2>Project Directory</h2>
-        <p style="margin-top: 2vh">CareBrew - Current</p>
-        <p style="margin-top: 2vh">Project 1</p>
-        <p style="margin-top: 2vh">Project 2</p>
-        <p style="margin-top: 2vh">Project 3</p>
+        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('CareBrew')">CareBrew - Current</p>
+        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project1')">Project 1</p>
+        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project2')">Project 2</p>
+        <p style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project3')">Project 3</p>
       </div>
     </div>
   </div>
-  </body>
+  <script>
+    function showProject(projectName) {
+      const projectInfo = document.getElementById('project-info');
+      const demoImage = document.getElementById('demo-image');
+      let projectContent = '';
+      let demoImageSrc = '';
+
+      switch (projectName) {
+        case 'CareBrew':
+          projectContent = `
+            <h2>CareBrew</h2>
+            <p style="margin-top: 2vh;">CareBrew is...</p>
+          `;
+          demoImageSrc = 'static/carebrew.png';
+          break;
+        case 'Project1':
+          projectContent = `
+            <h2>Project 1</h2>
+            <p style="margin-top: 2vh;">Project 1 is...</p>
+          `;
+          demoImageSrc = 'static/project1.png';
+          break;
+        case 'Project2':
+          projectContent = `
+            <h2>Project 2</h2>
+            <p style="margin-top: 2vh;">Project 2 is...</p>
+          `;
+          demoImageSrc = 'static/project2.png';
+          break;
+        case 'Project3':
+          projectContent = `
+            <h2>Project 3</h2>
+            <p style="margin-top: 2vh;">Project 3 is...</p>
+          `;
+          demoImageSrc = 'static/project3.png';
+          break;
+        default:
+          projectContent = '<h2>Project Info</h2>';
+          demoImageSrc = 'static/placeholder.png';
+      }
+
+      projectInfo.innerHTML = projectContent;
+      demoImage.src = demoImageSrc;
+    }
+  </script>
+</body>
 </html>
