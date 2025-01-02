@@ -6,7 +6,7 @@
   <title>Xiao's Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onload="showProject('CareBrew')">
+<body onload="initializePage()">
   <div class="banner">
     <button class="button" onclick="window.location.href='index.html'">About</button>
     <button class="button" onclick="window.location.href='resume.html'">Resume</button>
@@ -53,25 +53,28 @@
 
       <div class="text-box" style="width: 15%; height: 100%; margin-top: 2vh; margin-left: 3vh">
         <h2>Directory</h2>
-        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('CareBrew', this)">CareBrew - Current</p>
-        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('Project1', this)">Project 1</p>
-        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('Project2', this)">Project 2</p>
-        <p class="directory-button" style="margin-top: 2vh;" onclick="showProject('Project3', this)">Project 3</p>
+        <p class="directory-button" id="carebrew-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('CareBrew', this)">CareBrew</p>
+        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project1', this)">Project 1</p>
+        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project2', this)">Project 2</p>
+        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project3', this)">Project 3</p>
       </div>
     </div>
   </div>
   <script>
+    function initializePage() {
+      const carebrewButton = document.getElementById('carebrew-button');
+      showProject('CareBrew', carebrewButton);
+    }
+
     function showProject(projectName, element) {
       const projectInfo = document.getElementById('project-info');
       const demoImage = document.getElementById('demo-image');
       let projectContent = '';
       let demoImageSrc = '';
 
-      // Remove active class from all project directory items
       const projectItems = document.querySelectorAll('.directory-button');
       projectItems.forEach(item => item.classList.remove('active'));
 
-      // Add active class to the clicked item
       element.classList.add('active');
 
       switch (projectName) {
@@ -80,32 +83,32 @@
             <h2>CareBrew</h2>
             <p style="margin-top: 2vh;">CareBrew is...</p>
           `;
-          demoImageSrc = 'static/carebrew.png'; // Update with the actual image path
+          demoImageSrc = 'static/carebrew.png';
           break;
         case 'Project1':
           projectContent = `
             <h2>Project 1</h2>
             <p style="margin-top: 2vh;">Project 1 is about...</p>
           `;
-          demoImageSrc = 'static/project1.png'; // Update with the actual image path
+          demoImageSrc = 'static/project1.png';
           break;
         case 'Project2':
           projectContent = `
             <h2>Project 2</h2>
             <p style="margin-top: 2vh;">Project 2 involves...</p>
           `;
-          demoImageSrc = 'static/project2.png'; // Update with the actual image path
+          demoImageSrc = 'static/project2.png';
           break;
         case 'Project3':
           projectContent = `
             <h2>Project 3</h2>
             <p style="margin-top: 2vh;">Project 3 explores...</p>
           `;
-          demoImageSrc = 'static/project3.png'; // Update with the actual image path
+          demoImageSrc = 'static/project3.png';
           break;
         default:
           projectContent = '<h2>Project Info</h2><p style="margin-top: 2vh;">Select a project to see details.</p>';
-          demoImageSrc = 'static/placeholder.png'; // Default placeholder image
+          demoImageSrc = 'static/placeholder.png';
       }
 
       projectInfo.innerHTML = projectContent;
