@@ -41,22 +41,30 @@
     <h1 style="text-align: center;">Projects</h1>
 
     <div class="text-box-container" style="height: 76%">
-      <div class="text-box" id="project-info" style="width: 25%; height: 100%; margin-top: 2vh; margin-left: 2vh;">
-        <h2>CareBrew</h2>
-        <p style="margin-top: 2vh">CareBrew is...</p>
+
+      <div class="text-box-container-2" style="width: 25%; height: 113%; margin: 0;">
+        <div class="text-box" id="project-info" style="width: 100%; height: 70%; margin-top: 2vh; margin-left: 2vh;">
+          <h2>CareBrew</h2>
+          <p style="margin-top: 2vh">CareBrew is...</p>
+        </div>
+
+        <div class="text-box" id="project-keywords" style="width: 100%; height: 30%; margin-top: 2vh; margin-left: 2vh;">
+          <h2>Keywords</h2>
+          <p style="margin-top: 2vh">CareBrew keywords</p>
+        </div>
       </div>
 
-      <div class="text-box" id="project-demo" style="width: 40%; height: 100%; margin-top: 2vh; margin-left: 3vh">
+      <div class="text-box" id="project-demo" style="width: 40%; height: 100%; margin-top: 2vh; margin-left: 11vh">
         <h2>Demo</h2>
-        <img id="demo-image" src="static/placeholder.png" alt="Demo Placeholder" style="width: 100%; height: auto; margin-top: 2vh">
+        <div id="demo-content" style="width: 100%; height: auto; margin-top: 2vh;"></div>
       </div>
 
       <div class="text-box" style="width: 15%; height: 100%; margin-top: 2vh; margin-left: 3vh">
         <h2>Directory</h2>
         <p class="directory-button" id="carebrew-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('CareBrew', this)">CareBrew</p>
-        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project1', this)">Real-Time Conversation Assistant</p>
-        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project2', this)">FinePrint</p>
-        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Project3', this)">JC Jump</p>
+        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Real-Time Conversation Assistant', this)">Real-Time Conversation Assistant</p>
+        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('FinePrint', this)">FinePrint</p>
+        <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('JC Jump', this)">JC Jump</p>
       </div>
     </div>
   </div>
@@ -68,9 +76,11 @@
 
     function showProject(projectName, element) {
       const projectInfo = document.getElementById('project-info');
-      const demoImage = document.getElementById('demo-image');
+      const projectKeywords = document.getElementById('project-keywords');
+      const demoContent = document.getElementById('demo-content');
       let projectContent = '';
-      let demoImageSrc = '';
+      let keywordsContent = '';
+      let demoElement = '';
 
       const projectItems = document.querySelectorAll('.directory-button');
       projectItems.forEach(item => item.classList.remove('active'));
@@ -83,36 +93,70 @@
             <h2>CareBrew</h2>
             <p style="margin-top: 2vh;">CareBrew is...</p>
           `;
-          demoImageSrc = 'static/carebrew.png';
+          keywordsContent = `
+            <h2>Keywords</h2>
+            <p style="margin-top: 2vh;">CareBrew</p>
+          `;
+          demoElement = `
+            <video width="100%" height="auto" controls style="margin-top: 2vh;">
+              <source src="static/carebrew.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          `;
           break;
-        case 'Project1':
+        case 'Real-Time Conversation Assistant':
           projectContent = `
             <h2>Real-Time Conversation Assistant</h2>
-            <p style="margin-top: 2vh;">Project 1 is about...</p>
+            <p style="margin-top: 2vh;">The Real-Time Conversation Assistant is...</p>
           `;
-          demoImageSrc = 'static/project1.png';
+          keywordsContent = `
+            <h2>Keywords</h2>
+            <p style="margin-top: 2vh;">Real-Time, Conversation, Assistant</p>
+          `;
+          demoElement = `
+            <img src="static/fineprint_1.png" alt="Conversation Assistant Demo 1" style="width: 100%; height: auto; margin-top: 2vh;">
+            <img src="static/fineprint_2.png" alt="Conversation Assistant Demo 2" style="width: 100%; height: auto; margin-top: 2vh;">
+          `;
           break;
-        case 'Project2':
+        case 'FinePrint':
           projectContent = `
             <h2>FinePrint</h2>
-            <p style="margin-top: 2vh;">Project 2 involves...</p>
+            <p style="margin-top: 2vh;">FinePrint is...</p>
           `;
-          demoImageSrc = 'static/project2.png';
+          keywordsContent = `
+            <h2>Keywords</h2>
+            <p style="margin-top: 2vh;">JC Jump, Printing, Optimization</p>
+          `;
+          demoElement = `
+            <img src="static/fineprint_1.png" alt="FinePrint Demo 1" style="width: 100%; height: auto; margin-top: 2vh;">
+            <img src="static/fineprint_2.png" alt="FinePrint Demo 2" style="width: 100%; height: auto; margin-top: 2vh;">
+          `;
           break;
-        case 'Project3':
+        case 'JC Jump':
           projectContent = `
             <h2>JC Jump</h2>
-            <p style="margin-top: 2vh;">Project 3 explores...</p>
+            <p style="margin-top: 2vh;">JC Jump is...</p>
           `;
-          demoImageSrc = 'static/project3.png';
+          keywordsContent = `
+            <h2>Keywords</h2>
+            <p style="margin-top: 2vh;">JC Jump, Gaming, Platformer</p>
+          `;
+          demoElement = `
+            <video width="100%" height="auto" controls style="margin-top: 2vh;">
+              <source src="static/jc jump.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          `;
           break;
         default:
           projectContent = '<h2>Project Info</h2><p style="margin-top: 2vh;">Select a project to see details.</p>';
-          demoImageSrc = 'static/placeholder.png';
+          keywordsContent = '<h2>Keywords</h2><p style="margin-top: 2vh;">Select a project to see keywords.</p>';
+          demoElement = '';
       }
 
       projectInfo.innerHTML = projectContent;
-      demoImage.src = demoImageSrc;
+      projectKeywords.innerHTML = keywordsContent;
+      demoContent.innerHTML = demoElement;
     }
   </script>
 </body>
