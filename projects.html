@@ -62,10 +62,11 @@
       <div class="text-box" id="project-demo" style="width: 40%; height: 100%; margin-top: 2vh; margin-left: 11vh">
         <h2>Demo</h2>
         <div id="demo-content" style="width: 100%; height: auto; margin-top: 2vh;"></div>
+        <p id="demo-description" style="margin-top: 4vh;">Demo description goes here.</p>
       </div>
 
       <div class="text-box" style="width: 15%; height: 100%; margin-top: 2vh; margin-left: 3vh">
-        <h2>Directory</h2>
+        <h2>Project Directory</h2>
         <p class="directory-button" id="carebrew-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('CareBrew', this)">CareBrew</p>
         <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('Real-Time Conversation Assistant', this)">Real-Time Conversation Assistant</p>
         <p class="directory-button" style="margin-top: 2vh; cursor: pointer;" onclick="showProject('FinePrint', this)">FinePrint</p>
@@ -83,9 +84,11 @@
       const projectInfo = document.getElementById('project-info');
       const projectKeywords = document.getElementById('project-keywords');
       const demoContent = document.getElementById('demo-content');
+      const demoDescription = document.getElementById('demo-description');
       let projectContent = '';
       let keywordsContent = '';
       let demoElement = '';
+      let demoDesc = '';
 
       const projectItems = document.querySelectorAll('.directory-button');
       projectItems.forEach(item => item.classList.remove('active'));
@@ -111,11 +114,19 @@
                Web Development, Python, HTML/CSS, JavaScript, Flask</p>
           `;
           demoElement = `
-            <video width="100%" height="auto" controls style="margin-top: 2vh;">
+            <video width="100%" height="auto" controls style="border-radius: 10px;">
               <source src="static/carebrew-demo.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           `;
+          demoDesc = `CareBrew trains users in empathetic customer service by 
+          guiding them through a structured process: first, a scenario is 
+          generated and presented with a related question on the interface. 
+          The user submits their response, which is then scored across five 
+          dimensions of empathetic service, with feedback and a breakdown 
+          displayed. Personalized improvement suggestions are provided, and 
+          users can either refine their response or generate a new scenario 
+          for continued practice.`;
           break;
         case 'Real-Time Conversation Assistant':
           projectContent = `
@@ -135,8 +146,9 @@
               </p>
           `;
           demoElement = `
-            <img src="static/rta-demo.png" alt="Conversation Assistant Demo 1" style="width: 100%; height: auto; margin-top: 2vh; border-radius: 1vh;">
+            <img src="static/rta-demo.png" alt="Conversation Assistant Demo 1" style="width: 100%; height: auto;">
           `;
+          demoDesc = 'This is a demo description for the Real-Time Conversation Assistant.';
           break;
         case 'FinePrint':
           projectContent = `
@@ -156,11 +168,12 @@
               Web Development, JavaScript, React</p>
           `;
           demoElement = `
-            <video width="100%" height="auto" controls style="margin-top: 2vh;">
+            <video width="100%" height="auto" controls style="border-radius: 10px;">
               <source src="static/fineprint-demo.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           `;
+          demoDesc = 'This is a demo description for FinePrint.';
           break;
         case 'JC Jump':
           projectContent = `
@@ -178,21 +191,24 @@
                C, Assembly</p>
           `;
           demoElement = `
-            <video width="100%" height="auto" controls style="margin-top: 2vh;">
+            <video width="100%" height="auto" controls style="border-radius: 10px;">
               <source src="static/jc-jump-demo.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           `;
+          demoDesc = 'This is a demo description for JC Jump.';
           break;
         default:
           projectContent = '<h2>Project Info</h2><p style="margin-top: 2vh;">Select a project to see details.</p>';
           keywordsContent = '<h2>Keywords</h2><p style="margin-top: 2vh;">Select a project to see keywords.</p>';
           demoElement = '';
+          demoDesc = '';
       }
 
       projectInfo.innerHTML = projectContent;
       projectKeywords.innerHTML = keywordsContent;
       demoContent.innerHTML = demoElement;
+      demoDescription.innerHTML = demoDesc;
     }
   </script>
 </body>
